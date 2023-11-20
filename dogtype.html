@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+        integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <script src="../js/dogtype.js"></script>
+    <style>
+        /*반응형이라는 것을 고려해서*/
+        header {
+            /*임시로 준 헤더 스타일*/
+            height: 100px;
+            background-color: bisque;
+        }
+
+        .explainName {/*검색한 견종 이름*/
+            font-size: 25px;
+            margin: 5px;
+        }
+
+        #mainImg {/*검색한 견종 이미지*/
+            height: 360px;
+            width: 500px;
+        }
+
+        .explain {/*검색한 견종 큰 틀*/
+            display: flex;
+            margin: 20px;
+        }
+
+        .explainText {/*검색한 견종 설명*/
+            position: relative;
+            top: 15px;
+            margin: 20px;
+        }
+
+        .dogCharacter {/*검색한 견종 성격 설명 타이틀*/
+            font-size: 19px;
+            margin: 3px;
+        }
+
+        .explainCharacter {/*검색한 견종 성격 설명*/
+            margin: 6px;
+        }
+
+        .dogExplain {/*검색한 견종 습관 설명 타이틀*/
+            font-size: 19px;
+            margin: 3px;
+        }
+
+        .explainTrait {/*검색한 견종 습관 설명*/
+            margin: 6px;
+        }
+
+        .fit {/*검색한 견종과 잘 맞는 견종 큰 레이아웃*/
+            margin: 20px;
+        }
+
+        .fit>p {/*검색한 견종과 잘 맞는 견종 타이틀*/
+            font-size: 19px;
+        }
+
+        .fit>.fitImage {/*검색한 견종과 잘 맞는 견종 작은 레이아웃*/
+            display: flex;
+        }
+
+        #dogImgae {/*검색결과 이미지를 제외한 견종 이미지들*/
+            width: 270px;
+            height: 200px;
+            margin-right: 13px;
+        }
+
+        #dogname {/*검색결과 이름을 제외한 견종 이름들*/
+            font-size: 12pt;
+            margin: 3px;
+        }
+
+        .fitNot {/*검색한 견종과 맞지 않는 견종 큰 레이아웃*/
+            margin: 20px;
+        }
+
+        .fitNot>p {/*검색한 견종과 맞지 않는 견종 타이틀*/
+            font-size: 19px;
+        }
+
+        .fitNot>.fitNotImage {/*검색한 견종과 맞지 않는 견종 작은 레이아웃*/
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!--여긴 나중에...-->
+    </header>
+
+    <script>
+        temp();
+        inputPetData();
+        indexClickPetData();
+    </script>
+    <input type="text" id="search" placeholder="견종명을 입력">
+    <input type="button" class="click" value="검색" onclick="findExplian(event)">
+
+    <div class="explain">
+        <div class="explainImg">
+            <div class="explainName">말티즈</div>
+
+            <div>
+                <img id="mainImg" src="https://images.mypetlife.co.kr/content/uploads/2022/12/07161728/AdobeStock_212879665-1024x670.jpeg">
+            </div>
+        </div>
+
+
+        <div class="explainText">
+
+            <div>
+                <div class="dogCharacter">성격</div>
+                <div id="explainCharacter">
+                    오래된 견종이라 유전병에 대한 걱정이 상대적으로 적어요
+                </div>
+            </div>
+
+            <div>
+                <div class="dogExplain">습관</div>
+                <div id="explainTrait">
+                    가족 구성원 중 한사람만 좋아하는 편애가 심한 편이에요
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="fit">
+        <!--우리 아이와 잘 맞는 견종-->
+        <p>내 아이와 잘 맞는 견종</p>
+        <div class="fitImage">
+            <div class="fit1" onclick="showExplain(event)">
+                <img src="https://thumb.photo-ac.com/50/508b85e6e79d8b8dafd12ea40b1af733_t.jpeg" id="dogImgae">
+                <div class="fitName1" id="dogname">요크셔테리어</div>
+            </div>
+            <div class="fit2" onclick="showExplain(event)">
+                <img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjlfNCAg/MDAxNTY3MDc5NzkxNzc5.KY9AtMKkpn4TheXmkdR2RPfjkYx_XahBlv3ZdAnl4y8g.u8pjzBsBYLRcy6tqrNEHxxJlAeQrSKQIT1CwhULHDfAg.PNG.vet6390/%EB%B9%84%EA%B8%80%EC%9D%98_%ED%8A%B9%EC%A7%95.PNG?type=w800"
+                    id="dogImgae">
+                <div class="fitName2" id="dogname">비글</div>
+            </div>
+            <div class="fit3" onclick="showExplain(event)">
+                <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmekUd%2FbtrSDFbbA8R%2Fq3a2LlPKIsEPlZOPsirK31%2Fimg.png"
+                    id="dogImgae">
+                <div class="fitName3" id="dogname">시츄</div>
+            </div>
+            <div class="fit4" onclick="showExplain(event)">
+                <img src="https://img.famtimes.co.kr/resources/2019/02/15/yE5YxHsTC4HAblpe.jpg" id="dogImgae">
+                <div class="fitName4" id="dogname">치와와</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fitNot">
+        <!--우리 아이와 안 맞는 견종-->
+        <p>내 아이와 안맞는 견종</p>
+        <div class="fitNotImage">
+            <div class="fitNot1" onclick="showExplain(event)">
+                <img src="https://img.freepik.com/free-photo/view-of-cute-dog-enjoying-time-in-nature-at-the-park_23-2150407400.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699315200&semt=sph"
+                    id="dogImgae">
+                <div class="fitNotName1" id="dogname">푸들</div>
+            </div>
+            <div class="fitNot2" onclick="showExplain(event)">
+                <img src="https://images.mypetlife.co.kr/content/uploads/2022/12/07161728/AdobeStock_212879665-1024x670.jpeg"
+                    id="dogImgae">
+                <div class="fitNotName2" id="dogname">말티즈</div>
+            </div>
+            <div class="fitNot3" onclick="showExplain(event)">
+                <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmekUd%2FbtrSDFbbA8R%2Fq3a2LlPKIsEPlZOPsirK31%2Fimg.png"
+                    id="dogImgae">
+                <div class="fitNotName3" id="dogname">시츄</div>
+            </div>
+            <div class="fitNot4" onclick="showExplain(event)">
+                <img src="https://img.famtimes.co.kr/resources/2019/02/15/yE5YxHsTC4HAblpe.jpg" id="dogImgae">
+                <div class="fitNotName4" id="dogname">치와와</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
